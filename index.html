@@ -8,12 +8,17 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/debug.addIndicators.min.js"></script>
 	</head>
 	<body data-spy="scroll" data-target=".navbar" data-offset="50">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-5 bg-dark" style="">
-					<svg version="1.1" 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 750"
+					<svg class="sticky-top" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 750"
 						style="fill:none;stroke:#d4b55e;stroke-miterlimit:10">
 							<g id="layer_3">
 							<path  d="M475.04,506.26c0.07,10.15,10.03,18.73,20.2,18.51c10.17-0.22,19.3-8.16,22.21-17.89
@@ -390,6 +395,7 @@
 					</nav>
 				</div>
 				<div class="col-sm-6 bg-light" style="">
+					<div id="trigger1"></div>
 					<section id="content-about">
 						<h1>ABOUT</h1>
 						<p>
@@ -400,6 +406,7 @@
 							Duis tempus iaculis vehicula. Nunc non auctor augue, in consectetur velit. Nulla diam magna, ultricies eget viverra ut, interdum sed libero. Sed sit amet sem a arcu mattis porttitor. Curabitur id feugiat nunc. Fusce ut lorem sit amet tortor convallis lobortis sit amet a velit. Integer quis libero eu leo porttitor tempus. Quisque in magna libero. Cras suscipit consectetur ligula sit amet congue. Aenean venenatis consectetur lacinia. Nam et nunc in est fringilla tincidunt.
 						</p>
 					</section>
+					<div id="trigger2"></div>
 					<section id="content-work">
 						<h1>WORK</h1>
 						<p>
@@ -410,6 +417,7 @@
 							Duis tempus iaculis vehicula. Nunc non auctor augue, in consectetur velit. Nulla diam magna, ultricies eget viverra ut, interdum sed libero. Sed sit amet sem a arcu mattis porttitor. Curabitur id feugiat nunc. Fusce ut lorem sit amet tortor convallis lobortis sit amet a velit. Integer quis libero eu leo porttitor tempus. Quisque in magna libero. Cras suscipit consectetur ligula sit amet congue. Aenean venenatis consectetur lacinia. Nam et nunc in est fringilla tincidunt.
 						</p>
 					</section>
+					<div id="trigger3"></div>
 					<section id="content-contact">
 						<h1>CONTACT</h1>
 						<p>
@@ -423,6 +431,37 @@
 				</div>
 			</div>
 		</div>
+		<script>
+			function pathPrepare(el) {
+				var lineLength = el[0].getTotalLength();
+				el.css("stroke-dasharray", lineLength);
+				el.css("stroke-dashoffset", lineLength);
+			}
+
+			function addPathToController(layerId, triggerId) {
+				var elems = document.getElementById(layerId).getElementsByTagName("path");
+				var pathControl = jQuery.makeArray(elems);
+
+				for(var i = 0 ; i < $(pathControl).length ; i++){
+					pathPrepare($(pathControl[i]));
+				}
+
+				var controller = new ScrollMagic.Controller();
+
+				var tween = new TimelineMax();
+				for(i = 0 ; i < $(pathControl).length ; i++){
+					tween.add(TweenMax.to($(pathControl[i]), 1.0/($(pathControl).length) , {strokeDashoffset: 0, ease:Linear.easeNone})) 
+				}
+				
+				var scene = new ScrollMagic.Scene({triggerElement: "#" + triggerId, duration: 400, tweenChanges: true})
+								.setTween(tween)
+								.addTo(controller);
+			}
+							
+			addPathToController("layer_1", "trigger1");
+			addPathToController("layer_2", "trigger2");
+			addPathToController("layer_3", "trigger3");
+		</script>
 	</body>
 </html>
 
