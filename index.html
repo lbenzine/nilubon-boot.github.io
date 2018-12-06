@@ -24,9 +24,9 @@
 		</style>
 	</head>
 	<body data-spy="scroll" data-target=".navbar" data-offset="50">
-		<div id="trigger1" style="position:absolute;top:-100px;"></div>
-		<div id="trigger2" style="position:absolute;top:400px;"></div>
-		<div id="trigger3" style="position:absolute;top:700px;"></div>
+		<div id="trigger1" style="position:absolute;top:-400px;"></div>
+		<div id="trigger2" style="position:absolute;top:75vh;"></div>
+		<div id="trigger3" style="position:absolute;top:125vh;"></div>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-5 col-lg-5 bg-dark column-header" style="">
@@ -463,19 +463,6 @@
 			addPathToController("layer_1", "trigger1");
 			addPathToController("layer_2", "trigger2");
 			addPathToController("layer_3", "trigger3");
-		</script>
-
-		<script>
-			/*$(window).on('scroll', function () {
-				var top = $(window).scrollTop();
-				$('.column-delayscroll').each(function (idx) {
-						var $self = $(this);
-						var divine = parseInt($self.offset().top, 10) + parseInt($self.height(), 10) > top ? 0 : idx;
-						setTimeout(function () {
-							$self.css({transform: 'translate3d(0px, ' + (top) * -1 + 'px, 0px)'});
-						}, 100 * (idx - divine));
-				});
-			});*/
 		</script>
 	</body>
 </html>
