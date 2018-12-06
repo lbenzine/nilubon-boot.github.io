@@ -15,10 +15,25 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/debug.addIndicators.min.js"></script>
 		
 		<style>
-			.column-header{
+			
+			#column-header{
 				height: 300vh;
+				
+				/* Credit: http://www.colorzilla.com/gradient-editor/ */
+				background: #203549;
+				background: -moz-linear-gradient(-45deg, #203549 0%, #31535b 100%);
+				background: -webkit-linear-gradient(-45deg, #203549 0%,#31535b 100%);
+				background: linear-gradient(135deg, #203549 0%,#31535b 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#203549', endColorstr='#31535b',GradientType=1 );			
+			}
+			#column-nav{
+			}
+			#column-content{
 			}
 			@media (max-width:767px){
+				#column-nav{
+					background-color:rgb(248, 249, 250, 0.95);
+				}
 				#column-content > section{
 					min-height: 80vh;
 				}
@@ -31,13 +46,13 @@
 			}
 		</style>
 	</head>
-	<body data-spy="scroll" data-target=".navbar" data-offset="400">
+	<body class="bg-light" data-spy="scroll" data-target=".navbar" data-offset="400">
 		<div id="trigger1" style="position:absolute;top:-400px;"></div>
 		<div id="trigger2" style="position:absolute;top:75vh;"></div>
 		<div id="trigger3" style="position:absolute;top:125vh;"></div>
 		<div class="container-fluid">
 			<div class="row">
-				<div id="column-header" class="col-md-5 col-lg-5 bg-dark column-header" style="">
+				<div id="column-header" class="col-md-5 col-lg-5" style="">
 					<svg class="sticky-top" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 750"
 						style="fill:none;stroke:#d4b55e;stroke-miterlimit:10;height:100vh;width:100%">
 						<g id="layer_3">
@@ -399,8 +414,8 @@
 						</g>
 					</svg>
 				</div>
-				<div id="column-nav" class="col-md-2 col-lg-1 bg-light sticky-top" style="min-width:110px;">
-					<nav id="navbar-main" class="navbar navbar-light sticky-top">
+				<div id="column-nav" class="col-md-2 col-lg-1 sticky-top" style="min-width:110px;">
+					<nav id="navbar-main" class="navbar navbar-light sticky-top ">
 						<ul class="navbar-nav">
 							<li class="nav-item">
 								<a class="nav-link" href="#content-about">ABOUT</a>
@@ -414,7 +429,7 @@
 						</ul>
 					</nav>
 				</div>
-				<div id="column-content" class="col-md col-lg bg-light" style="">
+				<div id="column-content" class="col-md col-lg" style="">
 					<section id="content-about">
 						<h1>ABOUT</h1>
 						<p>
