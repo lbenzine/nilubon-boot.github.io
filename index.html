@@ -26,10 +26,15 @@
 				background: linear-gradient(135deg, #203549 0%,#31535b 100%);
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#203549', endColorstr='#54727a',GradientType=1 );			
 			}
+			
 			#column-nav{
+				min-width: 110px;
 			}
-			#column-content{
+			
+			.content-anchor{
+				visibility: hidden;
 			}
+			
 			@media (max-width:767px){
 				#column-nav{
 					background-color:rgb(234, 240, 246, 0.95);
@@ -37,6 +42,12 @@
 				
 				#column-content > section{
 					min-height: 80vh;
+				}
+				
+				.content-anchor{
+					display: block;
+					position: relative;
+					top: -135px;
 				}
 				
 			}
@@ -52,10 +63,10 @@
 	</head>
 
 	<body class="bg-light">
-		<div id="trigger1" style="position:absolute;top:-400px;"></div>
-		<div id="trigger2" style="position:absolute;top:75vh;"></div>
-		<div id="trigger3" style="position:absolute;top:100vh;"></div>
-		<div id="trigger4" style="position:absolute;top:125vh;"></div>
+		<div id="trigger1" style="position:absolute; top:-400px; visibility: hidden;"></div>
+		<div id="trigger2" style="position:absolute; top:75vh; visibility: hidden;"></div>
+		<div id="trigger3" style="position:absolute; top:100vh; visibility: hidden;"></div>
+		<div id="trigger4" style="position:absolute; top:125vh; visibility: hidden;"></div>
 		<div class="container-fluid">
 			<div class="row">
 				<div id="column-header" class="col-md-5 col-lg-5" style="">
@@ -968,22 +979,23 @@
 						</g>
 					</svg>
 				</div>
-				<div id="column-nav" class="col-md-2 col-lg-1 sticky-top" style="min-width:110px;">
+				<div id="column-nav" class="col-md-2 col-lg-1 sticky-top" style="">
 					<nav id="navbar-main" class="navbar navbar-light sticky-top ">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link" href="#content-about">ABOUT</a>
+								<a class="nav-link" href="#about">ABOUT</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#content-work">WORK</a>
+								<a class="nav-link" href="#work">WORK</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#content-contact">CONTACT</a>
+								<a class="nav-link" href="#contact">CONTACT</a>
 							</li>
 						</ul>
 					</nav>
 				</div>
 				<div id="column-content" class="col-md col-lg" style="">
+					<div class="content-anchor" id="about"></div>
 					<section id="content-about">
 						<h1>ABOUT</h1>
 						<p>
@@ -991,6 +1003,7 @@
 							Pellentesque convallis odio vitae velit convallis, sed facilisis tortor suscipit. 
 						</p>
 					</section>
+					<div class="content-anchor" id="work"></div>
 					<section id="content-work">
 						<h1>WORK</h1>
 						<p>
@@ -998,6 +1011,7 @@
 							Pellentesque convallis odio vitae velit convallis, sed facilisis tortor suscipit. 
 						</p>
 					</section>
+					<div class="content-anchor" id="contact"></div>
 					<section id="content-contact">
 						<h1>CONTACT</h1>
 						<p>
